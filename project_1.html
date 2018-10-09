@@ -5,7 +5,16 @@
 	</head>
 	<body>
 	  <script type="text/javascript">
-	    d3.select("body").append("p").text("Hello, World!");
+	    <!--d3.select("body").append("p").text("Hello, World!");-->
+	    var circleRadii = [40, 20, 10];
+	    
+	    var bodySelection = d3.select("body");
+
+	    var svgSelection = bodySelection.append("svg").attr("width", 200).attr("height", 200);
+
+	    var circleSelection = svgSelection.selectAll("circle").data(circleRadii).enter().append("circle");
+
+	    var circleAttributes = circleSelection.attr("cx", 50).attr("cy", 50).attr("r", function(d){return d;}).style("fill", function(d){var returnColor; if(d === 40{returnColor="green"} else if(d === 20){returnColor="purple";} else if(d === 10){returnColor = "red";} return returnColor;)});
 	  </script>
 	</body>
 </html>
