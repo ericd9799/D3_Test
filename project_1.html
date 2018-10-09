@@ -14,7 +14,13 @@
 
 	    var circleSelection = svgSelection.selectAll("circle").data(circleRadii).enter().append("circle");
 
-	    var circleAttributes = circleSelection.attr("cx", 50).attr("cy", 50).attr("r", function(d){return d;}).style("fill", function(d){var returnColor; if(d === 40{returnColor="green"} else if(d === 20){returnColor="purple";} else if(d === 10){returnColor = "red";} return returnColor;)});
+	    var circleAttributes = circleSelection.attr("cx", 50).attr("cy", 50).attr("r", function(d){return d;}).style("fill", function(d){
+	var returnColor; 
+	if(d === 40){returnColor="green";}
+	else if(d === 20){returnColor="purple";}
+	else if(d === 10){returnColor = "red";} 
+	return returnColor;
+	    });
 	  </script>
 	</body>
 </html>
