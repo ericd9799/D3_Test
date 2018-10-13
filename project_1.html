@@ -25,7 +25,7 @@
 	    <p></p>
 	  </div>
 	  <svg id="square"></svg>
-	  <svg id="ellipseContainer"></svg>
+	  <svg id="jsonCircle"></svg>
 	  <script type="text/javascript">
 	    <!--d3.select("body").append("p").text("Hello, World!");-->
 	    var circleRadii = [40, 20, 10];
@@ -57,10 +57,10 @@
 	    var svgSquare = d3.select("#square");
 	    var squares = svgSquare.append("rect").attr("x", 10).attr("y", 10).attr("width", 50).attr("height", 100).attr("fill", "green");
 
-	    var ellipseJSON = [{"x-axis": 30, "y-axis": 30, "radius": 20, "color":green}, {"x-axis":70, "y-axis":70,"radius":20,"color":purple}];
+	    var jsonData = [{"x-axis": 30, "y-axis": 30, "radius": 20, "color":green}, {"x-axis":70, "y-axis":70,"radius":20,"color":purple}];
 
-	    var ellipseContainerSelection = d3.select("#ellipseContainer");
-	    var ellipseCircles = ellipseContainerSelection.selectAll("circle").data(ellipseJSON).enter().append("circle");
+	    var jsonSelection = d3.select("#jsonCircle");
+	    var circles = jsonSelection.selectAll("circle").data(jsonData).enter().append("circle");
 	  </script>
 	</body>
 </html>
