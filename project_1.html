@@ -26,6 +26,9 @@
 	  </div>
 	  <svg id="square"></svg>
 	  <svg id="jsonCircle"></svg>
+	  <svg id="ellipseContainer"></svg>
+	  <svg id="lineContainer"></svg>
+	  <svg id="pathContainer"></svg>
 	  <script type="text/javascript">
 	    <!--d3.select("body").append("p").text("Hello, World!");-->
 	    var circleRadii = [40, 20, 10];
@@ -62,6 +65,19 @@
 	    var jsonSelection = d3.select("#jsonCircle");
 	    var circles = jsonSelection.selectAll("circle").data(jsonData).enter().append("circle");
 	    var circlesAttribute = circles.attr("cx", function(d){return d.x_axis;}).attr("cy", function(d){return d.y_axis;}).attr("r", function(d){return d.radius;}).style("fill", function(d){return d.color;});
+
+	    var ellipseData = [{"x_axis":50, "y_axis":50, "x_radius":25, "y_radius":10, "color":"blue"}];
+	    var ellipseContainerSelection = d3.select("#ellipseContainer");
+	    var ellipse = ellipseContainerSelection.selectAll("ellipse").data(ellipseData).enter().append("ellipse");
+	    var ellipseAttribute = ellipse.attr("cx", function(d){return d.x_axis;}).attr("cy", function(d){return d.y_axis;}).attr("rx", function(d){return d.x_radius;}).attr("ry", function(d){return d.y_radius;}).style("fill", function(d){return d.color;});
+	    
+	    var lineContainerSelection = d3.select("#lineContainer");
+	    var line = lineContainerSelection.append("line").attr("x1", 5).attr("y1", 5).attr("x2", 50).attr("y2", 50).attr("stroke", "black").attr("stroke-width", 5);
+
+	    var lineData = [ { "x": 1,   "y": 5},  { "x": 20,  "y": 20},{ "x": 40,  "y": 10}, { "x": 60,  "y": 40},{ "x": 80,  "y": 5},  { "x": 100, "y": 60}];
+	    var lineFunction = d3.svg.line().x(function(d){return d.x;}).y(function(d){return d.y;}).interpolate("linear");
+	    var pathContainer = d3.select("#pathContainer");
+	    var pathGraph = pathContainer.append("path").attr("d", lineFunction(lineData)).attr("stroke", "blue").attr("stroke-width", 5).attr("fille", "none");
 	  </script>
 	</body>
 </html>
