@@ -62,9 +62,11 @@
 
 	    var jsonData = [{"x_axis": 30, "y_axis": 30, "radius": 20, "color": "green"}, {"x_axis":70,"y_axis":70,"radius":20,"color":"purple"}];
 
-	    var jsonSelection = d3.select("#jsonCircle");
+	    var jsonSelection = d3.select("#jsonCircle").append("g");
 	    var circles = jsonSelection.selectAll("circle").data(jsonData).enter().append("circle");
 	    var circlesAttribute = circles.attr("cx", function(d){return d.x_axis;}).attr("cy", function(d){return d.y_axis;}).attr("r", function(d){return d.radius;}).style("fill", function(d){return d.color;});
+	    var circleText = jsonSelection.selectAll("text").data(jsonData).enter().append("text");
+	    var circleTextAttribute = circleText.attr("x", function(d){return d.x_axis;}).attr("y", function(d){return d.y_axis;}).text(function(d){return "(" + d.x_axis + ", " + d.y_axis + ")";});
 
 	    var ellipseData = [{"x_axis":50, "y_axis":50, "x_radius":25, "y_radius":10, "color":"blue"}];
 	    var ellipseContainerSelection = d3.select("#ellipseContainer");
