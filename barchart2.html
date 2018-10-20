@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <style>
+      svg {
+      border: 1px solid black;
+      }
+
+      .chartsvg rect{
+      fill: steelblue;
+      }
+
+      .chartsvg text{
+      fill: red;
+      text-anchor: end;
+      font: 10px sans-serif;
+      }
+    </style>
+    <title>D3 - Bar Chart</title>
+  </head>
+  <body>
+    <h1>Reading from file with SVG</h1>
+    <svg class="chartsvg"></svg>
+    <script>
+      var width=420, barHeight = 20;
+
+      //var x2 = d3.scaleLinear().range([0, width]);
+
+      //var chart = d3.select(".chartsvg").attr("width", width);
+
+      d3.tsv("Learning/D3_test/data.tsv", type, function(data){
+      console.log(data[0].name);
+      /*x2.domain([0, d3.max(data, function(d){return d.value;})]);
+
+      chart.attr("height", barHeight * data.length);
+
+      var bar = chart.selectAll("g").data(data).enter().append("g").attr("transform", function(d, i){return "translate(0, " + i * barHeight + ")";});
+
+      bar.append("rect").attr("width", function(d){return x2(d.value);}).attr("height", barHeight - 1);
+
+      bar.append("text").attr("x", function(d){return x2(d.value) - 3;}).attr("y", barHeight/2).attr("dy", ".35em").text(function(d){return d.value;});*/
+      });
+
+      function type(d){
+      d.value = +d.value;
+      return d;
+      }
+      
+    </script>
+  </body>
+</html>
+
